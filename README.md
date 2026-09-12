@@ -1,8 +1,8 @@
 # swsbbh — scalar-wave scattering by a black hole
 
-A C++/AMReX learning project: evolve radial modes of a massless scalar field on a fixed Schwarzschild spacetime, recover their ringdown, and investigate numerical accuracy and adaptive refinement.
+Evolve radial modes of a massless scalar field on a fixed Schwarzschild spacetime, recover their ringdown, and investigate numerical accuracy and adaptive refinement.
 
-**Current state:** buildable scaffolding. The executable initialises AMReX and allocates a zeroed, one-dimensional grid. Initial data, the physical potential, evolution, diagnostics and AMR are still implementation exercises. No numerical physics results have been generated.
+**Current state:** buildable scaffolding. The executable initialises AMReX and allocates a zeroed, one-dimensional grid. Initial data, the physical potential, evolution, diagnostics and AMR are still implementation exercises. No numerical physics have been generated yet.
 
 Start with the [theory guide](docs/theory.pdf) ([LaTeX source](docs/theory.tex)) and [learning roadmap](docs/roadmap.md). The guide assumes graduate GR but introduces the black-hole and numerical-relativity material needed here.
 
@@ -47,7 +47,7 @@ The solver will use cell-centred **point values**, `psi` and `Pi = partial_t psi
 
 The intended workflow is: derive a result, implement a small part, compare against a known answer, and review before continuing. You write the central solver. Assistant help should normally be explanations, hints, debugging and code review; complete implementations can be requested explicitly.
 
-The roughly 80-hour core project runs on a laptop. MPI, GPUs and full three-dimensional evolution are later extensions. `SWSBBH_ENABLE_MPI` exposes the dependency build switch for future use; numerical MPI correctness and scaling have not been tested.
+`SWSBBH_ENABLE_MPI` exposes the dependency build switch for future use; numerical MPI correctness and scaling have not been tested.
 
 ## Theory and analysis tools
 
