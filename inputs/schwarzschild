@@ -1,0 +1,23 @@
+# Milestone 3: incoming scalar l=2 pulse, G=c=M=1.
+# CURRENT EXECUTABLE: geometry/allocation only. All physics inputs are a spec.
+geometry.coord_sys = 0
+geometry.prob_lo = -200.0
+geometry.prob_hi = 300.0
+geometry.is_periodic = 0
+amr.n_cell = 1024
+amr.max_grid_size = 128
+amr.max_level = 0
+
+problem.type = schwarzschild
+scalar.ell = 2
+pulse.amplitude = 1.0
+pulse.center = 40.0
+pulse.sigma = 4.0
+# Planned Pi = partial_x psi gives an incoming, left-moving pulse.
+wave.cfl = 0.2
+stop_time = 200.0
+diagnostics.observer_x = 60.0
+diagnostics.interval = 1
+amr.plot_int = 100
+amr.checkpoint_files_output = 0
+

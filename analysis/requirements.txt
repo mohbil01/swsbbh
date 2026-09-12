@@ -1,0 +1,4 @@
+# Install when analysis begins; capture the resolved versions with each study.
+numpy
+scipy
+matplotlib

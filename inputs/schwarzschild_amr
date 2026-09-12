@@ -1,0 +1,31 @@
+# Milestone 4 SPECIFICATION ONLY. The bootstrap deliberately rejects max_level>0.
+geometry.coord_sys = 0
+geometry.prob_lo = -200.0
+geometry.prob_hi = 300.0
+geometry.is_periodic = 0
+amr.n_cell = 256
+amr.max_grid_size = 128
+amr.max_level = 2
+amr.ref_ratio = 2 2
+amr.regrid_int = 4
+amr.n_error_buf = 8
+
+problem.type = schwarzschild
+scalar.ell = 2
+pulse.amplitude = 1.0
+pulse.center = 40.0
+pulse.sigma = 4.0
+wave.cfl = 0.2
+stop_time = 200.0
+diagnostics.observer_x = 60.0
+diagnostics.interval = 1
+amr.plot_int = 100
+amr.checkpoint_files_output = 0
+
+# Planned refinement: always refine this interval on each eligible level.
+tagging.forced_lo = -20.0
+tagging.forced_hi = 80.0
+# Elsewhere, use dx^2*abs(Dxx psi)/max(max_valid_abs_psi_on_level,1e-12).
+tagging.curvature_threshold = 1.0e-3
+tagging.amplitude_floor = 1.0e-12
+

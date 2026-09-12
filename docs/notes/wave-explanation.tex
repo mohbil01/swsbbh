@@ -1,0 +1,203 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=24mm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,tabularx,microtype}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=blue]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\title{What is the wave in the black-hole scattering project?}
+\author{Project note}
+\date{}
+\begin{document}
+\maketitle
+\vspace{-1.5em}
+
+\section{The field we evolve}
+
+The current project evolves a \textbf{massless scalar field on a fixed
+Schwarzschild spacetime}. The wave is a disturbance in the scalar field.
+A small perturbation of the metric would instead describe the related
+problem of gravitational perturbations.
+
+In units \(G=c=1\), the background metric is
+\begin{equation}
+ ds^2=-f(r)\,dt^2+f(r)^{-1}\,dr^2+r^2\,d\Omega^2,
+ \qquad f(r)=1-\frac{2M}{r}.
+\end{equation}
+We keep this metric fixed and solve
+\begin{equation}
+ \Box_{g_{\mathrm{Schw}}}\varphi
+ =\frac{1}{\sqrt{-g}}\partial_\mu
+ \left(\sqrt{-g}\,g^{\mu\nu}\partial_\nu\varphi\right)=0.
+\end{equation}
+This is a controlled test-field approximation: if
+\(\Phi=\varepsilon\varphi\), then the scalar stress-energy is quadratic
+in \(\varepsilon\). With no independent gravitational perturbation,
+\begin{equation}
+ T_{\mu\nu}[\Phi]=O(\varepsilon^2),
+ \qquad g_{\mu\nu}=g^{\mathrm{Schw}}_{\mu\nu}+O(\varepsilon^2).
+\end{equation}
+Thus the scalar can propagate on the background at leading order while
+its effect on the geometry is neglected. A unit code amplitude is a
+normalisation of this linear problem.
+
+\section{How the three-dimensional wave becomes a radial problem}
+
+Separate the angular dependence using a spherical harmonic:
+\begin{equation}
+ \varphi(t,r,\theta,\phi)=\frac{\psi_{\ell m}(t,r)}{r}
+ Y_{\ell m}(\theta,\phi).
+\end{equation}
+For a real scalar, use real spherical harmonics or a real combination of
+complex harmonics. Each mode evolves independently. Define the
+\emph{tortoise coordinate}
+\begin{equation}
+ x=r_*=r+2M\ln\left(\frac{r}{2M}-1\right).
+\end{equation}
+The exterior \(2M<r<\infty\) maps to \(-\infty<x<\infty\).
+Suppressing the mode indices, the equation becomes
+\begin{equation}
+ \boxed{\quad \partial_t^2\psi=\partial_x^2\psi-V_\ell(r(x))\psi,\qquad
+ V_\ell(r)=f(r)\left[\frac{\ell(\ell+1)}{r^2}
+                         +\frac{2M}{r^3}\right].\quad}
+\end{equation}
+This is a one-dimensional wave equation with a spatially varying
+potential. The potential accounts for angular structure and curvature;
+it produces scattering outside the horizon. It is not a material
+surface. For Schwarzschild, the radial potential depends on \(\ell\)
+but not on \(m\).
+
+\clearpage
+\section{Specifying the wave means specifying initial data}
+
+A second-order equation in time requires \textbf{two initial functions}:
+\begin{equation}
+ \psi(0,x)=\psi_0(x),\qquad
+ \partial_t\psi(0,x)=\Pi_0(x).
+\end{equation}
+The code's two evolved fields will be
+\(\psi\) and \(\Pi=\partial_t\psi\).
+A convenient initial radial profile is a Gaussian:
+\begin{equation}
+ \psi_0(x)=A\exp\left[-\frac{(x-x_0)^2}{2\sigma^2}\right].
+\end{equation}
+Here \(A\) is the amplitude, \(x_0\) the centre, and \(\sigma\) the width.
+The shape alone does not determine which way the wave travels.
+
+Where the potential is negligible, the general solution is
+\begin{equation}
+ \psi(t,x)=F(x-t)+G(x+t).
+\end{equation}
+The first term moves towards increasing \(x\); the second moves towards
+decreasing \(x\), hence towards the black hole. An initially inward-moving
+Gaussian therefore uses
+\begin{equation}
+ \boxed{\quad \Pi_0(x)=+\partial_x\psi_0(x)
+              =-\frac{x-x_0}{\sigma^2}\psi_0(x).\quad}
+\end{equation}
+The minus sign choice, \(\Pi_0=-\partial_x\psi_0\), selects outward motion.
+Choosing \(\Pi_0=0\) gives equal inward and outward parts in the free-wave
+limit. At finite radius, a nonzero potential means these are local
+free-wave prescriptions, not exact pure scattering states.
+
+A single angular mode is a radial pulse with an angular pattern:
+\(\ell=0\) is spherically symmetric, while \(\ell=2\) has quadrupolar
+structure. A wave packet localised on just one side of the black hole
+would require a superposition of angular modes.
+
+\section{Properties you can vary}
+
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Parameter & Effect in the experiment \\
+\midrule
+\(A\) & Scales the field linearly and its energy quadratically; does not
+change the background's ringdown frequencies. \\
+\(\sigma\) & Changes the pulse width and frequency content. A narrower
+Gaussian has a broader frequency spectrum. \\
+\(x_0\) & Changes the launch position, arrival time and initial overlap
+with the scattering potential. \\
+\(\Pi_0\) & Selects initial inward motion, outward motion, or a mixture. \\
+\(\ell\) & Changes the angular structure, potential and ringdown spectrum. \\
+\(k_0\) & Adds an oscillation scale to a Gaussian wave packet. \\
+\bottomrule
+\end{tabularx}
+
+For the last option, use
+\begin{equation}
+ \psi_0(x)=A e^{-(x-x_0)^2/(2\sigma^2)}
+             \cos\!\left[k_0(x-x_0)\right],
+ \qquad \Pi_0=\partial_x\psi_0.
+\end{equation}
+Far from the potential, \(k_0\) sets the approximate carrier frequency.
+Varying it lets you study how the reflected and transmitted energy
+fractions depend on frequency.
+
+\clearpage
+\section{How to see the propagation}
+
+Once time evolution is implemented, three complementary views will show
+what the field does:
+\begin{enumerate}
+ \item \textbf{Snapshots or an animation of \(\psi(t,x)\).}
+ Watch the initial pulse move inward, interact with the potential, and
+ split into inward and outward components.
+ \item \textbf{A spacetime heat map of \(\psi(t,x)\).}
+ Put \(x\) on the horizontal axis, \(t\) on the vertical axis, and field
+ value in colour. In regions where the potential is small, propagation
+ follows \(x-t=\mathrm{constant}\) or \(x+t=\mathrm{constant}\).
+ \item \textbf{A waveform at a fixed observer.}
+ Record
+ \begin{equation}
+   w(t)=\psi(t,x_{\mathrm{obs}}).
+ \end{equation}
+ An observer outside the barrier can see the outgoing scattered signal
+ and its subsequent decaying oscillations, called \emph{ringdown}.
+\end{enumerate}
+
+The one-dimensional plots show the reduced radial field. To reconstruct
+the scalar at a spacetime point, restore the angular factor and \(1/r\):
+\begin{equation}
+ \varphi(t,r,\theta,\phi)=\frac{\psi(t,r_*(r))}{r}Y_{\ell m}(\theta,\phi).
+\end{equation}
+The waveform's time coordinate is Schwarzschild \(t\); a static observer
+at radius \(r_{\mathrm{obs}}\) has proper time
+\(d\tau=\sqrt{f(r_{\mathrm{obs}})}\,dt\).
+
+The transmitted part moves towards \(x\to-\infty\), corresponding to the
+horizon. In the planned finite numerical domain, the first experiment
+uses distant reflecting endpoints and a time window chosen to exclude
+significant returning boundary reflections. A larger-domain comparison
+will check that the measured scattering is independent of those walls.
+
+\section{Connection to gravitational waves and the project goal}
+
+If instead we perturb the metric,
+\begin{equation}
+ g_{\mu\nu}=g^{\mathrm{Schw}}_{\mu\nu}
+             +\varepsilon h_{\mu\nu}+O(\varepsilon^2),
+\end{equation}
+the leading vacuum problem is the linearised Einstein equation
+\(\delta G_{\mu\nu}[h]=0\). Schwarzschild gravitational perturbations can
+be described by Regge--Wheeler and Zerilli master equations of the form
+\begin{equation}
+ \partial_t^2\Psi=\partial_x^2\Psi-V_{\mathrm{grav}}(r)\Psi.
+\end{equation}
+The numerical structure is similar, but the variables and potentials
+have different physical meanings. This offers a natural later extension;
+the present scalar waveform is not a gravitational-wave strain.
+
+\textbf{The current goal} is to build and validate a C++/AMReX solver for
+scalar scattering, extract its ringdown, and study numerical accuracy
+and adaptive refinement. The first practical exercise remains a flat,
+periodic travelling wave with \(V=0\), before introducing Schwarzschild
+curvature.
+
+\smallskip
+\small
+Further reading: E.~Berti, V.~Cardoso and A.~O.~Starinets,
+\emph{Quasinormal modes of black holes and black branes},
+\href{https://arxiv.org/abs/0905.2975}{arXiv:0905.2975}.
+The repository's longer theory guide contains the detailed derivations.
+\end{document}

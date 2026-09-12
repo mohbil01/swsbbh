@@ -1,0 +1,15 @@
+# Milestone 2: periodic flat-space wave on [0, 2*pi].
+# CURRENT EXECUTABLE: geometry/allocation only. Physics and time inputs are a spec.
+geometry.coord_sys = 0
+geometry.prob_lo = 0.0
+geometry.prob_hi = 6.2831853071795864769
+geometry.is_periodic = 1
+amr.n_cell = 128
+amr.max_grid_size = 64
+amr.max_level = 0
+
+# Planned solution: psi(t,x) = sin(x-t), Pi(t,x) = -cos(x-t).
+problem.type = flat_wave
+wave.cfl = 0.2
+stop_time = 6.2831853071795864769
+
